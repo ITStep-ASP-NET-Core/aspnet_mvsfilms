@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zain:ital,wght@0,200;0,300;0,400;0,700;0,800;0,900;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Story+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --main-color: #ffffff;
+    --secondary-color: #333;
+
+    --accent-color: #a162bf;
+    --dark-accent-color: #9649b5;
+    --error-color: #e75e5e;
+    --negative-color: #e75e5e;
+    --attractive-color: #ffcc13;
+    --neutral-color: #c0c0c0;
+    --positive-color: #008f21;
+
+    --light-color: white;
+    --dark-color: #333;
+
+    --default-font: "Zain", sans-serif;
+    --footer-title-font: 'Pacifico', cursive, sans-serif;
+    --price-font: 'Josefin Sans', sans-serif;
+    --inputs-font: "Quicksand", sans-serif;
+    --quote-font: "Story Script", sans-serif;
+    --check-font: "Tomorrow", sans-serif;
+
+    --basic-box-shadow: 0 3px 4px 3px rgb(0, 0, 0, .2);
+}
+
+[data-theme="dark"] {
+    --main-color: #2f2f2f;
+    --secondary-color: #ffffff;
+
+    --accent-color: #cbacd8;
+    --dark-accent-color: #bc94ce;
+    --positive-color: #5fcf43;
+}

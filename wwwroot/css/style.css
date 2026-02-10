@@ -1,0 +1,93 @@
+@import url('./base/reset.css');
+@import url('./base/variables.css');
+@import url('./base/typography.css');
+
+@import url('./components/link.css');
+@import url('./components/button.css');
+@import url('./components/input.css');
+
+@import url('./pages/index.css');
+@import url('./pages/movie.css');
+
+
+/* defaults */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    min-height: 100vh;
+    transition: .4s ease-in-out;
+    background: linear-gradient(135deg, #6a5391 0%, #586e8a 100%);
+    background-color: var(--main-color);
+    color: var(--secondary-color);
+}
+
+main {
+    flex: 1;
+}
+
+ul {
+    list-style-position: inside;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.img-container {
+    overflow: hidden;
+}
+
+.img-container img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/* header */
+header {
+    box-shadow: 0 0 10px 10px rgb(0, 0, 0, .1);
+    position: sticky;
+    z-index: 1000;
+    top: 0;
+    padding: 1vh 2vw;
+    background-color: var(--secondary-color);
+    color: var(--main-color);
+}
+
+/* nav */
+
+nav {
+    display: flex;
+}
+
+nav a.title {
+    font-size: 2.5rem;
+    color: var(--main-color);
+}
+
+nav a.title:hover {
+    text-decoration: none;
+}
+
+/* footer */
+footer {
+    box-shadow: 0 0 10px 10px rgb(0, 0, 0, .1);
+    padding: 1vh 2vw;
+    text-align: center;
+}

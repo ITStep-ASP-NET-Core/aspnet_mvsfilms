@@ -1,0 +1,39 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    font-size: 1.4rem;
+    font-family: var(--default-font);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a {
+    margin: 0;
+    transition: color .3s;
+}
+
+.price {
+    font-family: var(--price-font);
+}
+
+
+@media (max-width: 1250px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 550px) {
+    html {
+        font-size: 12px;
+    }
+}

@@ -1,0 +1,10 @@
+
+
+.lnk {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.lnk:hover {
+    text-decoration: underline;
+}

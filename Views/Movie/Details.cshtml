@@ -1,0 +1,61 @@
+﻿@using MVCFilms.Models;
+
+@{
+    ViewData["Title"] = "Details";
+}
+@{
+    var movie = ViewBag.Movie;
+    var authors = new List<Author>(ViewBag.Movie.Authors);
+    var actors = new List<Actor>(ViewBag.Movie.Actors);
+    var genres = new List<Genre>(ViewBag.Movie.Genre);
+}
+
+<div class="movie">
+    <div class="img-container">
+        <img src=@movie.Poster alt=@($"image_of_{movie.Title}") />
+    </div>
+    <div class="info-container">
+        <h1>@movie.Title</h1>
+        <ul>
+            <li>Release date: @movie.ReleaseDate.ToString("dd MMMM yyyy")</li>
+            @if(movie.ClosingDate is not null && movie.ReleaseDate != movie.ClosingDate)
+            {
+                <li>Closing date: @movie.ClosingDate.ToString("dd MMMM yyyy")</li>
+            }
+            
+            <li>
+                Authors: 
+                @foreach(var author in authors)
+                {
+                    <a href="#" class="lnk">@author.Name@(author != authors.Last() ? ", " : "")</a>
+                }
+            </li>
+            <li>Runtime: @(movie.Runtime / 60)h @(movie.Runtime % 60)m</li>
+            <li>
+                Genre:
+                @foreach(var genre in genres)
+                {
+                    <a href="#" class="lnk">@genre.Name@(genre != genres.Last() ? ", " : "")</a>
+                }
+            </li>
+            <li>Rating: @movie.Rating.ToString("F1")</li>
+            <li>
+                Actors:
+                @foreach(var actor in actors)
+                {
+                    <a href="#" class="lnk">@actor.Name@(actor != actors.Last() ? ", " : "")</a>
+                }
+            </li>
+            <li>Country: @movie.Country</li>
+        </ul>
+        <p>
+            @movie.Plot
+        </p>
+    </div>
+    @if(movie.TeaserUrl != null)
+    {
+        <div class="teaser-container">
+            <iframe src=@movie.TeaserUrl></iframe>
+        </div>
+    }
+</div>
