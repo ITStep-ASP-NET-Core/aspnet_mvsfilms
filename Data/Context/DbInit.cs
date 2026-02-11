@@ -97,7 +97,7 @@ namespace MVCFilms.Data
 						Plot = "A death row guard learns that a gentle giant in his charge possesses a mysterious gift.",
 						Country = "United States",
 						Poster = "https://m.media-amazon.com/images/M/MV5BMTUxMzQyNjA5MF5BMl5BanBnXkFtZTYwOTU2NTY3._V1_SX300.jpg",
-						TeaserUrl = "https://www.youtube.com/watch?v=Ki4haFrqSrw",
+						TeaserUrl = "https://www.youtube.com/embed/Ki4haFrqSrw?si=l-Hraetfytl5H8P5",
 						Rating = 8.6m,
 						Authors = new List<Author>()
 						{
@@ -126,7 +126,7 @@ namespace MVCFilms.Data
 						Plot = "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
 						Country = "United States",
 						Poster = "https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SX300.jpg",
-						TeaserUrl = "https://www.youtube.com/watch?v=PLl99DlL6b4",
+						TeaserUrl = "https://www.youtube.com/embed/PLl99DlL6b4?si=hcekB4nSWLoo_RXU",
 						Rating = 9.3m,
 						Authors = new List<Author>()
 						{
@@ -154,7 +154,7 @@ namespace MVCFilms.Data
 						Plot = "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
 						Country = "United States",
 						Poster = "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
-						TeaserUrl = "https://www.youtube.com/watch?v=UaVTIH8mujA",
+						TeaserUrl = "https://www.youtube.com/embed/UaVTIH8mujA?si=cMkJmQcaFoe73Pya",
 						Rating = 9.2m,
 						Authors = new List<Author>()
 						{
@@ -182,7 +182,7 @@ namespace MVCFilms.Data
 						Plot = "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
 						Country = "United States",
 						Poster = "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",
-						TeaserUrl = "https://www.youtube.com/watch?v=EXeTwQWrcwY",
+						TeaserUrl = "https://www.youtube.com/embed/EXeTwQWrcwY?si=48e43XAgcYb1firA",
 						Rating = 9.0m,
 						Authors = new List<Author>()
 						{
@@ -241,7 +241,7 @@ namespace MVCFilms.Data
 						Plot = "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
 						Country = "USA , UK , Canada",
 						Poster = "https://statichdrezka.ac/i/2022/12/8/la363f2cf94f5gp16v37x.jpeg",
-						TeaserUrl = "https://www.youtube.com/watch?v=zSWdZVtXT7E",
+						TeaserUrl = "https://www.youtube.com/embed/zSWdZVtXT7E?si=kOTPFwWEq7m2aQrT",
 						Rating = 8.7m,
 						Authors = new List<Author>()
 						{
@@ -271,7 +271,7 @@ namespace MVCFilms.Data
 						Plot = "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
 						Country = "United States",
 						Poster = "https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_.jpg",
-						TeaserUrl = "https://www.youtube.com/watch?v=s7EdQ4FqbhY",
+						TeaserUrl = "https://www.youtube.com/embed/s7EdQ4FqbhY?si=hNyVB3X95aN9uXny",
 						Rating = 8.9m,
 						Authors = new List<Author>()
 						{
@@ -325,7 +325,7 @@ namespace MVCFilms.Data
 						Plot = "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more.",
 						Country = "United States",
 						Poster = "https://m.media-amazon.com/images/M/MV5BMmEzNTkxYjQtZTc0MC00YTVjLTg5ZTEtZWMwOWVlYzY0NWIwXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
-						TeaserUrl = "https://www.youtube.com/watch?v=qtRKdVHc-cE",
+						TeaserUrl = "https://www.youtube.com/embed/qtRKdVHc-cE?si=YS2BDBM1vVVEG8Ho",
 						Rating = 8.8m,
 						Authors = new List<Author>()
 						{
@@ -353,7 +353,8 @@ namespace MVCFilms.Data
 						Plot = "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
 						Country = "United States",
 						Poster = "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
-						TeaserUrl = "https://www.youtube.com/watch?v=66TuSJo4dZM",
+						TeaserUrl = "https://www.youtube.com/embed/66TuSJo4dZM?si=ThzRoBYWssi-wjH5&amp",
+						
 						Rating = 8.8m,
 						Authors = new List<Author>()
 						{
