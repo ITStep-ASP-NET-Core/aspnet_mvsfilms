@@ -1,0 +1,118 @@
+﻿@model MVCFilms.Controllers.MovieController.CreateMovieViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="details">
+    <form asp-action="Create" enctype="multipart/form-data" >
+        <div asp-validation-summary="ModelOnly" class="error-text"></div>
+        @* Title *@
+        <div class="form-group">
+            <label asp-for="Title" class="control-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="error-text"></span>
+        </div>
+        @* ReleaseDate *@
+        <div class="form-group">
+            <label asp-for="ReleaseDate" class="control-label"></label>
+            <input asp-for="ReleaseDate" class="form-control" />
+            <span asp-validation-for="ReleaseDate" class="error-text"></span>
+        </div>
+        @* ClosingDate *@
+        <div class="form-group">
+            <label asp-for="ClosingDate" class="control-label">ClosingDate (optional)</label>
+            <input asp-for="ClosingDate" class="form-control" />
+            <span asp-validation-for="ClosingDate" class="error-text"></span>
+        </div>
+        @* Runtime *@
+        <div class="form-group">
+            <label asp-for="Runtime" class="control-label"></label>
+            <input asp-for="Runtime" class="form-control" />
+            <span asp-validation-for="Runtime" class="error-text"></span>
+        </div>
+        @* Country *@
+        <div class="form-group">
+            <label asp-for="Country" class="control-label"></label>
+            <input asp-for="Country" class="form-control" />
+            <span asp-validation-for="Country" class="error-text"></span>
+        </div>
+        @* Rating *@
+        <div class="form-group">
+            <label asp-for="Rating" class="control-label"></label>
+            <input asp-for="Rating" class="form-control" />
+            <span asp-validation-for="Rating" class="error-text"></span>
+        </div>
+        @* TeaserUrl *@
+        <div class="form-group">
+            <label asp-for="TeaserUrl" class="control-label">TeaserUrl (optional)</label>
+            <input asp-for="TeaserUrl" class="form-control" />
+            <span asp-validation-for="TeaserUrl" class="error-text"></span>
+        </div>
+        @* SelectActors *@
+        <div class="form-group">
+            <label>SelectActors</label>
+            <div id="selectedActors" class="selected-container"></div>
+            <select id="actorsSelect" class="form-control">
+                <option value="">select actor</option>
+                @foreach(var actor in ViewBag.Actors)
+                {
+                    <option value=@actor.Value>@actor.Text</option>
+                }
+            </select>
+            <span id="actorError" class="error-text"></span>
+        </div>
+        @* SelectAuthors *@
+        <div class="form-group">
+            <label>SelectAuthors</label>
+            <div id="selectedAuthors" class="selected-container"></div>
+            <select id="authorsSelect" class="form-control">
+                <option value="">select author</option>
+                @foreach (var author in ViewBag.Authors)
+                {
+                    <option value=@author.Value>@author.Text</option>
+                }
+            </select>
+            <span id="authorError" class="error-text"></span>
+        </div>
+        @* SelectGenre *@
+        <div class="form-group">
+            <label>SelectGenre</label>
+            <div id="selectedGenres" class="selected-container"></div>
+            <select id="genreSelect" class="form-control">
+                <option value="">select genre</option>
+                @foreach(var genre in ViewBag.Genres)
+                {
+                    <option value=@genre.Value>@genre.Text</option>
+                }
+            </select>
+            <span id="genreError" class="error-text"></span>
+        </div>
+        @* Plot *@
+        <div class="form-group">
+            <label asp-for="Plot" class="control-label"></label>
+            <textarea asp-for="Plot" class="form-control"></textarea>
+            <span asp-validation-for="Plot" class="error-text"></span>
+        </div>
+        @* Poster *@
+        <div class="form-group">
+            <label asp-for="ImageFile" class="control-label">Poster</label>
+            <input asp-for="ImageFile" type="file" class="form-control" />
+            <span asp-validation-for="ImageFile" class="error-text"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn" />
+        </div>
+    </form>
+    <a class="lnk lnk-back" asp-action="Index">Back to movies</a>
+</div>
+
+<script src="~/js/pages/create.js"></script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

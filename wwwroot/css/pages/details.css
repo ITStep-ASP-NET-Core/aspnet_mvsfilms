@@ -2,7 +2,7 @@
 .movie {
     display: grid;
     gap: 2vw;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 4fr 5fr;
     padding: 2vh 15vw;
     font-size: 1.7rem;
 }
@@ -33,21 +33,20 @@
 
 @media (max-width: 1600px) {
     .movie {
-        grid-template-columns: 1fr 2fr;
-        padding: 2vh 8vw;
+        padding: 2vh 4vw;
         font-size: 1.6rem;
     }
 }
 
-
 @media (max-width: 1200px) {
     .movie {
+        grid-template-columns: 1fr 1fr;
         font-size: 1.4rem;
-        padding: 2vh 2vw;
+        padding: 2vh 1vw;
     }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
     .movie {
         grid-template-columns: unset;
         padding: 2vh 5vw;

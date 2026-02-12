@@ -16,7 +16,8 @@ textarea {
     letter-spacing: .7px;
 }
 
-select {
+select,
+input[type="file"] {
     cursor: pointer;
 }
 

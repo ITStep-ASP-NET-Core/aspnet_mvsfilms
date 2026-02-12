@@ -1,12 +1,14 @@
-﻿@{
+﻿@model IEnumerable<MVCFilms.Models.Movie>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 
 <div class="movies">
-    @foreach(var movie in @ViewBag.Movies)
+    @foreach(var movie in Model)
     {
-        <a href=@($"/Movie/{movie.Id}") class="card">
+        <a class ="card" asp-action="Details" asp-route-id="@movie.Id">
             <div class="img-container">
                 <img src=@movie.Poster alt=@($"image_of_{movie.Title}") />
             </div>

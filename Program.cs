@@ -41,13 +41,7 @@ public class Program
 			
         app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}")
-                .WithStaticAssets();
-        app.MapControllerRoute(
-				name: "movie",
-				pattern: "Movie/{id:int}",
-				defaults: new { controller = "Movie", action = "Details" }
-        );
+                pattern: "{controller=Movie}/{action=Index}/{id?}");
 
         app.Run();
     }

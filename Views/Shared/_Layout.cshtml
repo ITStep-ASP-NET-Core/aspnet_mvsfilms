@@ -10,7 +10,12 @@
 <body data-theme="dark">
     <header>
         <nav>
-            <a class="title" asp-area="" asp-controller="Home" asp-action="Index">MVCFilms</a>
+            <a class="title" asp-area="" asp-controller="Movie" asp-action="Index">MVCFilms</a>
+            <ul>
+                <li>
+                    <a asp-area="" asp-controller="Movie" asp-action="Create">Create</a>
+                </li>
+            </ul>
         </nav>
     </header>
     <main>

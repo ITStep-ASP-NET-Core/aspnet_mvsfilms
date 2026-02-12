@@ -1,26 +1,26 @@
 ﻿@using MVCFilms.Models;
+@model Movie;
 
 @{
     ViewData["Title"] = "Details";
 }
 @{
-    var movie = ViewBag.Movie;
-    var authors = new List<Author>(ViewBag.Movie.Authors);
-    var actors = new List<Actor>(ViewBag.Movie.Actors);
-    var genres = new List<Genre>(ViewBag.Movie.Genre);
+    var authors = new List<Author>(Model.Authors);
+    var actors = new List<Actor>(Model.Actors);
+    var genres = new List<Genre>(Model.Genre);
 }
 
 <div class="movie">
     <div class="img-container">
-        <img src=@movie.Poster alt=@($"image_of_{movie.Title}") />
+        <img src=@Model.Poster alt=@($"image_of_{Model.Title}") />
     </div>
     <div class="info-container">
-        <h1>@movie.Title</h1>
+        <h1>@Model.Title</h1>
         <ul>
-            <li>Release date: @movie.ReleaseDate.ToString("dd MMMM yyyy")</li>
-            @if(movie.ClosingDate is not null && movie.ReleaseDate != movie.ClosingDate)
+            <li>Release date: @Model.ReleaseDate.ToString("dd MMMM yyyy")</li>
+            @if(Model.ClosingDate is not null && Model.ReleaseDate != Model.ClosingDate)
             {
-                <li>Closing date: @movie.ClosingDate.ToString("dd MMMM yyyy")</li>
+                <li>Closing date: @(Model.ClosingDate).ToString("dd MMMM yyyy")</li>
             }
             
             <li>
@@ -30,7 +30,7 @@
                     <a href="#" class="lnk">@author.Name@(author != authors.Last() ? ", " : "")</a>
                 }
             </li>
-            <li>Runtime: @(movie.Runtime / 60)h @(movie.Runtime % 60)m</li>
+            <li>Runtime: @(Model.Runtime / 60)h @(Model.Runtime % 60)m</li>
             <li>
                 Genre:
                 @foreach(var genre in genres)
@@ -38,7 +38,7 @@
                     <a href="#" class="lnk">@genre.Name@(genre != genres.Last() ? ", " : "")</a>
                 }
             </li>
-            <li>Rating: @movie.Rating.ToString("F1")</li>
+            <li>Rating: @Model.Rating.ToString("F1")</li>
             <li>
                 Actors:
                 @foreach(var actor in actors)
@@ -46,16 +46,16 @@
                     <a href="#" class="lnk">@actor.Name@(actor != actors.Last() ? ", " : "")</a>
                 }
             </li>
-            <li>Country: @movie.Country</li>
+            <li>Country: @Model.Country</li>
         </ul>
         <p>
-            @movie.Plot
+            @Model.Plot
         </p>
     </div>
-    @if(movie.TeaserUrl != null)
+    @if(Model.TeaserUrl != null)
     {
         <div class="teaser-container">
-            <iframe src=@movie.TeaserUrl></iframe>
+            <iframe src=@Model.TeaserUrl></iframe>
         </div>
     }
 </div>

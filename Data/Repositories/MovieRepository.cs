@@ -11,9 +11,23 @@ namespace MVCFilms.Repositories
         {
             using (ApplicationContext context = Program.DbContext())
             {
-                await context.Movies.AddAsync(Movie);
+                foreach (var actor in Movie.Actors)
+                {
+					context.Entry(actor).State = EntityState.Unchanged;
+				}
+				foreach(var author in Movie.Authors)
+				{
+					context.Entry(author).State = EntityState.Unchanged;
+				}
+				foreach(var genre in Movie.Genre)
+				{
+					context.Entry(genre).State = EntityState.Unchanged;
+				}
+
+				await context.Movies.AddAsync(Movie);
                 await context.SaveChangesAsync();
-            }
+
+			}
         }
         public async Task DeleteMovieAsync(Movie Movie)
         {
