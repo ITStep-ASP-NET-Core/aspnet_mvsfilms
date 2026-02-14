@@ -4,10 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using MVCFilms.Interfaces;
 using MVCFilms.Models;
 using MVCFilms.Repositories;
-using System.Collections;
-using System.Diagnostics;
-using System.Diagnostics.Metrics;
-using static Microsoft.AspNetCore.Razor.Language.TagHelperMetadata;
 
 namespace MVCFilms.Controllers
 {

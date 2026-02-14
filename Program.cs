@@ -38,6 +38,9 @@ public class Program
         app.UseAuthorization();
 
         app.MapStaticAssets();
+
+        app.UseStaticFiles();
+        app.UseStatusCodePagesWithReExecute("/Error404");
 			
         app.MapControllerRoute(
                 name: "default",

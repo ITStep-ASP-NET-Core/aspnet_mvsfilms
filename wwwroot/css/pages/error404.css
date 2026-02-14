@@ -1,0 +1,19 @@
+.not-found {
+    position: relative;
+    width: 100vw;
+    height: 90vh;
+}
+
+.not-found svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.not-found path {
+    fill: none;
+    stroke: var(--accent-color);
+    transition: .8s ease-in-out;
+}
