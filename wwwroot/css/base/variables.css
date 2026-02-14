@@ -10,9 +10,9 @@
     --secondary-color: #333;
 
     --accent-color: #a162bf;
-    --dark-accent-color: #9649b5;
     --error-color: #e75e5e;
     --negative-color: #e75e5e;
+    --control-color: #3498db;
     --attractive-color: #ffcc13;
     --neutral-color: #c0c0c0;
     --positive-color: #008f21;
@@ -35,6 +35,5 @@
     --secondary-color: #ffffff;
 
     --accent-color: #d89dff;
-    --dark-accent-color: #bc94ce;
     --positive-color: #5fcf43;
 }

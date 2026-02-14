@@ -31,6 +31,33 @@
     border: none;
 }
 
+.movie .manage-block {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.movie .manage-block a {
+    color: var(--light-color);
+    padding: 1vw;
+}
+.movie .manage-block a:hover {
+    text-decoration: none;
+}
+
+.movie .manage-block a.lnk-edit {
+    background: var(--control-color);
+}
+.movie .manage-block a.lnk-edit:hover {
+    box-shadow: 0 4px 0 0 color-mix(in srgb, var(--control-color) 85%, black);;
+}   
+
+.movie .manage-block a.lnk-delete {
+    background: var(--negative-color);
+}
+.movie .manage-block a.lnk-delete:hover {
+    box-shadow: 0 4px 0 0 color-mix(in srgb, var(--negative-color) 85%, black);;
+}
+
 @media (max-width: 1600px) {
     .movie {
         padding: 2vh 4vw;

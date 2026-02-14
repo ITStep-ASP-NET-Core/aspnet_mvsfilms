@@ -1,6 +1,5 @@
 
-
-.details {
+.manage {
     box-shadow: 0 3px 6px 3px rgba(0, 0, 0, .1);
     max-width: 50vw;
     margin: 2vh auto 5vh;
@@ -8,54 +7,54 @@
     border-radius: 40px;
 }
 
-.details form {
+.manage form {
     display: flex;
     flex-direction: column;
     gap: 2vh;
 }
 
 
-.details form label {
+.manage form label {
     color: var(--neutral-color);
 }
 
-.details form textarea {
+.manage form textarea {
     resize: vertical;
     scrollbar-width: none;
     min-height: 5rem;
     transition: none;
 }
 
-.details form select option:checked {
+.manage form select option:checked {
     color: var(--neutral-color);
 }
 
-.details form .selected-container input {
+.manage form .selected-container input {
     cursor: pointer;
     transition: .3s;
 }
-.details form .selected-container input:hover {
+.manage form .selected-container input:hover {
     background-color: var(--error-color);
 }
 
-.details form .error-text {
+.manage form .error-text {
     color: var(--error-color);
 }
 
-.details .lnk-back {
+.manage .lnk-back {
     display: inline-block;
     margin: 1vw;
     font-size: 1.5rem;
 }
 
 @media (max-width: 1250px) {
-    .details {
+    .manage {
         max-width: 70vw;
     }
 }
 
 @media (max-width: 750px) {
-    .details {
+    .manage {
         max-width: 95vw;
     }
 }

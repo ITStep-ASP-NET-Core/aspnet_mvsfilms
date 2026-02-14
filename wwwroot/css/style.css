@@ -7,7 +7,8 @@
 @import url('./components/input.css');
 
 @import url('./pages/index.css');
-@import url('./pages/create.css');
+@import url('./pages/manage.css');
+@import url('./pages/delete.css');
 @import url('./pages/details.css');
 
 
@@ -56,7 +57,7 @@ img {
 }
 
 .img-container img {
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
     height: 100%;
 }
@@ -92,6 +93,11 @@ nav a.title {
 
 nav a.title:hover {
     text-decoration: none;
+}
+
+nav ul {
+    display: flex;
+    gap: 2vw;
 }
 
 /* footer */

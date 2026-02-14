@@ -1,12 +1,13 @@
-﻿@model MVCFilms.Controllers.MovieController.CreateMovieViewModel
+﻿@model MVCFilms.Controllers.MovieController.EditMovieViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 
 <div class="manage">
-    <form asp-action="Create" enctype="multipart/form-data" >
-        <div asp-validation-summary="ModelOnly" class="error-text"></div>
+    <form asp-action="Edit" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
         @* Title *@
         <div class="form-group">
             <label asp-for="Title" class="control-label"></label>
@@ -52,7 +53,16 @@
         @* SelectActors *@
         <div class="form-group">
             <label>SelectActors</label>
-            <div id="selectedActors" class="selected-container"></div>
+            <div id="selectedActors" class="selected-container">
+                @{
+                    var actors = ViewBag.Actors as IEnumerable<SelectListItem>;
+                }
+                @foreach(var actorId in Model.SelectedActorsIds)
+                {
+                    var actorName = actors?.FirstOrDefault(x => int.Parse(x.Value) == actorId)?.Text;
+                    <div data-id="@actorId" data-name="@actorName"></div>
+                }
+            </div>
             <select id="actorsSelect" class="form-control">
                 <option value="">select actor</option>
                 @foreach(var actor in ViewBag.Actors)
@@ -65,10 +75,19 @@
         @* SelectAuthors *@
         <div class="form-group">
             <label>SelectAuthors</label>
-            <div id="selectedAuthors" class="selected-container"></div>
+            <div id="selectedAuthors" class="selected-container">
+                @{
+                    var authors = ViewBag.Authors as IEnumerable<SelectListItem>;
+                }
+                @foreach(var authorId in Model.SelectedAuthorsIds)
+                {
+                    var authorName = authors?.FirstOrDefault(x => int.Parse(x.Value) == authorId)?.Text;
+                    <div data-id="@authorId" data-name="@authorName"></div>
+                }
+            </div>
             <select id="authorsSelect" class="form-control">
                 <option value="">select author</option>
-                @foreach (var author in ViewBag.Authors)
+                @foreach(var author in ViewBag.Authors)
                 {
                     <option value=@author.Value>@author.Text</option>
                 }
@@ -78,7 +97,16 @@
         @* SelectGenre *@
         <div class="form-group">
             <label>SelectGenre</label>
-            <div id="selectedGenres" class="selected-container"></div>
+            <div id="selectedGenres" class="selected-container">
+                @{
+                    var genres = ViewBag.Genres as IEnumerable<SelectListItem>;
+                }
+                @foreach(var genreId in Model.SelectedGenresIds)
+                {
+                    var genreName = genres?.FirstOrDefault(x => int.Parse(x.Value) == genreId)?.Text;
+                    <div data-id=@genreId data-name=@genreName></div>
+                }
+            </div>
             <select id="genreSelect" class="form-control">
                 <option value="">select genre</option>
                 @foreach(var genre in ViewBag.Genres)
@@ -102,12 +130,11 @@
         </div>
 
         <div class="form-group">
-            <input type="submit" value="Create" class="btn" />
+            <input type="submit" value="Save" class="btn btn-primary" />
         </div>
     </form>
     <a class="lnk lnk-back" asp-action="Index">Back to movies</a>
 </div>
-
 <script src="~/js/pages/manage.js"></script>
 
 @section Scripts {

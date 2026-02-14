@@ -8,7 +8,7 @@
 <div class="movies">
     @foreach(var movie in Model)
     {
-        <a class ="card" asp-action="Details" asp-route-id="@movie.Id">
+        <a class="card" asp-action="Details" asp-route-id="@movie.Id">
             <div class="img-container">
                 <img src=@movie.Poster alt=@($"image_of_{movie.Title}") />
             </div>

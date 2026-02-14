@@ -15,7 +15,7 @@
     transition: all .3s ease;
     background-color: var(--main-color);
     border-radius: 10px;
-    font-size: 1.3rem;
+    font-size: 1rem;
     color: var(--secondary-color);
     text-align: center;
     text-decoration: none;

@@ -51,6 +51,10 @@
         <p>
             @Model.Plot
         </p>
+        <div class="manage-block">
+            <a class="btn lnk-edit" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+            <a class="btn lnk-delete" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+        </div>
     </div>
     @if(Model.TeaserUrl != null)
     {

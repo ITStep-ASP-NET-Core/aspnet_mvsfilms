@@ -37,69 +37,84 @@ namespace MVCFilms.Repositories
                 await context.SaveChangesAsync();
             }
         }
-        public async Task EditMovieAsync(Movie Movie)
-        {
-            using (ApplicationContext context = Program.DbContext())
-            {
-                var currentMovie = context.Movies
-                    .Include(b => b.Authors)
-                    .FirstOrDefault(b => b.Id == Movie.Id);
+		public async Task EditMovieAsync ( Movie movie )
+		{
+			using var context = Program.DbContext();
 
-                if (currentMovie is null) return;
+			var currentMovie = await context.Movies
+				.Include(m => m.Actors)
+				.Include(m => m.Authors)
+				.Include(m => m.Genre)
+				.FirstOrDefaultAsync(m => m.Id == movie.Id);
 
-                context.Entry(currentMovie).CurrentValues.SetValues(Movie);
+			if(currentMovie is null)
+			{
+				return;
+			}
 
-                var incomingAuthorIds = Movie.Authors.Select(a => a.Id).ToList();
-                var updatedAuthors = context.Authors
-                    .Where(a => incomingAuthorIds.Contains(a.Id))
-                    .ToList();
+			bool hasChanges = false;
 
-                currentMovie.Authors = currentMovie.Authors.Where(a => !incomingAuthorIds.Contains(a.Id)).ToList();
+			if(currentMovie.Title != movie.Title ||
+				currentMovie.Plot != movie.Plot ||
+				currentMovie.Country != movie.Country ||
+				currentMovie.Poster != movie.Poster ||
+				currentMovie.TeaserUrl != movie.TeaserUrl ||
+				currentMovie.Runtime != movie.Runtime ||
+				currentMovie.Rating != movie.Rating ||
+				currentMovie.ReleaseDate != movie.ReleaseDate ||
+				currentMovie.ClosingDate != movie.ClosingDate)
+			{
+				hasChanges = true;
+			}
 
-                foreach (var author in updatedAuthors)
-                {
-                    if (!currentMovie.Authors.Any(a => a.Id == author.Id))
-                    {
-                        currentMovie.Authors.Add(author);
-                    }
-                }
+			if(!currentMovie.Authors.Select(a => a.Id).OrderBy(id => id).ToList().SequenceEqual(movie.Authors.Select(a => a.Id).OrderBy(id => id).ToList()))
+				hasChanges = true;
+			if(!currentMovie.Actors.Select(a => a.Id).OrderBy(id => id).ToList().SequenceEqual(movie.Actors.Select(a => a.Id).OrderBy(id => id).ToList()))
+				hasChanges = true;
+			if(!currentMovie.Genre.Select(g => g.Id).OrderBy(id => id).ToList().SequenceEqual(movie.Genre.Select(g => g.Id).OrderBy(id => id).ToList()))
+				hasChanges = true;
 
-                var incomingActorsIds = Movie.Actors.Select(a => a.Id).ToList();
-                var updatedActors = context.Actors
-                    .Where(a => incomingActorsIds.Contains(a.Id))
-                    .ToList();
+			if(!hasChanges)
+			{
+				return;
+			}
 
-                currentMovie.Actors = currentMovie.Actors.Where(a => !incomingActorsIds.Contains(a.Id)).ToList();
+			context.Entry(currentMovie).CurrentValues.SetValues(movie);
 
-                foreach (var actor in updatedActors)
-                {
-                    if (!currentMovie.Actors.Any(a => a.Id == actor.Id))
-                    {
-                        currentMovie.Actors.Add(actor);
-                    }
-                }
+			var incomingAuthorIds = movie.Authors.Select(a => a.Id).ToHashSet();
+			currentMovie.Authors.Clear();
+			var authorsToAdd = await context.Authors
+				.Where(a => incomingAuthorIds.Contains(a.Id))
+				.ToListAsync();
+			foreach(var author in authorsToAdd)
+			{
+				currentMovie.Authors.Add(author);
+			}
 
-                var incomingGenreIds = Movie.Genre.Select(a => a.Id).ToList();
-                var updatedGenres = context.Genres
-                    .Where(a => incomingGenreIds.Contains(a.Id))
-                    .ToList();
+			var incomingActorIds = movie.Actors.Select(a => a.Id).ToHashSet();
+			currentMovie.Actors.Clear();
+			var actorsToAdd = await context.Actors
+				.Where(a => incomingActorIds.Contains(a.Id))
+				.ToListAsync();
+			foreach(var actor in actorsToAdd)
+			{
+				currentMovie.Actors.Add(actor);
+			}
 
-                currentMovie.Genre = currentMovie.Genre.Where(a => !incomingGenreIds.Contains(a.Id)).ToList();
+			var incomingGenreIds = movie.Genre.Select(g => g.Id).ToHashSet();
+			currentMovie.Genre.Clear();
+			var genresToAdd = await context.Genres
+				.Where(g => incomingGenreIds.Contains(g.Id))
+				.ToListAsync();
+			foreach(var genre in genresToAdd)
+			{
+				currentMovie.Genre.Add(genre);
+			}
 
-                foreach (var genre in updatedGenres)
-                {
-                    if (!currentMovie.Genre.Any(a => a.Id == genre.Id))
-                    {
-                        currentMovie.Genre.Add(genre);
-                    }
-                }
+			await context.SaveChangesAsync();
+		}
 
-                context.SaveChanges();
-            }
-        }
-
-
-        public async Task<IEnumerable<Movie>> GetAllMoviesAsync()
+		public async Task<IEnumerable<Movie>> GetAllMoviesAsync()
         {
             using (ApplicationContext context = Program.DbContext())
             {

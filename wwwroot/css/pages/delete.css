@@ -1,0 +1,69 @@
+
+.delete {
+    display: grid;
+    gap: 2vw;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 70vw;
+    margin: 2vw auto;
+}
+
+.delete .info-container {
+    padding: 2vw;
+    background-color: var(--main-color);
+    border-radius: 20px;
+}
+
+.delete .img-container {
+    justify-self: center;
+    border-radius: 5px;
+}
+
+.delete .title {
+    display: block;
+    overflow: hidden;
+    height: 6rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.delete form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5vh;
+    text-align: center;
+}
+
+.delete form h3 {
+    text-align: left;
+}
+
+.delete form .btn-delete {
+    background-color: var(--negative-color);
+}
+
+.delete form .btn-delete:hover {
+    box-shadow: 0 4px 0 0 color-mix(in srgb, var(--negative-color) 85%, black);;
+}
+
+@media (max-width: 1200px) {
+    .delete {
+        max-width: 80vw;
+    }
+}
+
+@media (max-width: 900px) {
+    .delete {
+        max-width: 90vw;
+    }
+}
+
+@media (max-width: 750px) {
+    .delete {
+        grid-template-columns: unset;
+        max-width: 80vw;
+    }
+    .delete form {
+        gap: unset;
+    }
+}
