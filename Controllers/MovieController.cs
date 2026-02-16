@@ -1,9 +1,12 @@
+using aspnet_mvsfilms.Annotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using MVCFilms.Annotations;
 using MVCFilms.Interfaces;
 using MVCFilms.Models;
 using MVCFilms.Repositories;
+using System.ComponentModel.DataAnnotations;
 
 namespace MVCFilms.Controllers
 {
@@ -24,22 +27,39 @@ namespace MVCFilms.Controllers
 
 		public class CreateMovieViewModel
 		{
+			[Required]
+			[MaxLength(40, ErrorMessage = "The Title is too long")]
 			public string Title { get; set; }
 
+			[Required]
+			[FutureDate(ErrorMessage = "Date cannot be in the future")]
 			public DateTime ReleaseDate { get; set; }
 
+			[FutureDate(ErrorMessage = "Date cannot be in the future")]
 			public DateTime? ClosingDate { get; set; }
 
+			[Required]
+			[Range(1, 360, ErrorMessage = "Movie is too long")]
 			public int Runtime { get; set; }
 
+			[Required]
+			[MaxLength(500, ErrorMessage = "The Plot is too long")]
 			public string Plot { get; set; }
 
+			[Required]
+			[MaxLength(50, ErrorMessage = "The list of Countries is too long")]
 			public string Country { get; set; }
 
+			[Required]
+			[AllowedExtensions(["jpg", "png", "webp"], ErrorMessage = "This file extension is not allowed")]
+			[MaxFileSize(8 * 1024 * 1024, ErrorMessage = "File is too big")]
 			public IFormFile ImageFile { get; set; }
 
+			[Url]
 			public string? TeaserUrl { get; set; }
 
+			[Required]
+			[Range(0.0, 5.0, ErrorMessage = "The rating can only range from one to ten")]
 			public decimal Rating { get; set; }
 
 			public List<int> SelectedActorsIds { get; set; } = new List<int>();
@@ -51,22 +71,40 @@ namespace MVCFilms.Controllers
 		public class EditMovieViewModel
 		{
 			public int? Id { get; set; }
+
+			[Required]
+			[MaxLength(40, ErrorMessage = "The Title is too long")]
 			public string Title { get; set; }
 
+			[Required]
+			[FutureDate(ErrorMessage = "Date cannot be in the future")]
 			public DateTime ReleaseDate { get; set; }
 
+			[FutureDate(ErrorMessage = "Date cannot be in the future")]
 			public DateTime? ClosingDate { get; set; }
 
+			[Required]
+			[Range(1, 360, ErrorMessage = "Movie is too long")]
 			public int Runtime { get; set; }
 
+			[Required]
+			[MaxLength(500, ErrorMessage = "The Plot is too long")]
 			public string Plot { get; set; }
 
+			[Required]
+			[MaxLength(50, ErrorMessage = "The list of Countries is too long")]
 			public string Country { get; set; }
 
+			[Required]
+			[AllowedExtensions(["jpg", "png", "webp"], ErrorMessage = "This file extension is not allowed")]
+			[MaxFileSize(8 * 1024 * 1024, ErrorMessage = "File is too big")]
 			public IFormFile? ImageFile { get; set; }
 
+			[Url]
 			public string? TeaserUrl { get; set; }
 
+			[Required]
+			[Range(0.0, 5.0, ErrorMessage = "The rating can only range from one to ten")]
 			public decimal Rating { get; set; }
 
 			public List<int> SelectedActorsIds { get; set; } = new List<int>();
@@ -193,6 +231,24 @@ namespace MVCFilms.Controllers
 				await _movie.AddMovieAsync(movie);
 				return RedirectToAction(nameof(Index));
 			}
+
+			ViewBag.Authors = (await _author.GetAllAuthorsAsync()).Select(a => new SelectListItem
+			{
+				Value = a.Id.ToString(),
+				Text = a.Name
+			});
+
+			ViewBag.Actors = (await _actor.GetAllActorsAsync()).Select(a => new SelectListItem
+			{
+				Value = a.Id.ToString(),
+				Text = a.Name
+			});
+
+			ViewBag.Genres = (await _genre.GetAllGenresAsync()).Select(a => new SelectListItem
+			{
+				Value = a.Id.ToString(),
+				Text = a.Name
+			});
 			return View(movieModel);
 		}
 
@@ -283,14 +339,6 @@ namespace MVCFilms.Controllers
 
 					if(movieModel.ImageFile != null)
 					{
-						var allowedExtensions = new[] { ".jpg", ".png", ".jpeg" };
-
-						if(!allowedExtensions.Contains(Path.GetExtension(movieModel.ImageFile.FileName).ToLower()))
-							ModelState.AddModelError("ImageFile", "Allowed only .jpg, .jpeg, .png");
-
-						if(movieModel.ImageFile.Length > 2_000_000)
-							ModelState.AddModelError("ImageFile", "File is too big");
-
 						var fileName = $"movie_image_{movieModel.Title.Replace(" ", "_").ToLower().Trim()}{Path.GetExtension(movieModel.ImageFile.FileName)}";
 						var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
 
